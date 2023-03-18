@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/src/model/data.dart';
+import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
 import 'package:flutter_ecommerce_app/src/themes/theme.dart';
 import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
+import 'package:get/get.dart';
 
 class ProductDetailPage extends StatefulWidget {
   ProductDetailPage({Key key}) : super(key: key);
@@ -16,6 +18,8 @@ class _ProductDetailPageState extends State<ProductDetailPage>
     with TickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
+  SupplierBR supplier = Get.arguments;
+
   @override
   void initState() {
     super.initState();
@@ -117,7 +121,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
             fontSize: 160,
             color: LightColor.lightGrey,
           ),
-          Image.asset('assets/show_1.png')
+          Image.network(supplier.imagem)
         ],
       ),
     );
@@ -200,7 +204,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      TitleText(text: "NIKE AIR MAX 200", fontSize: 25),
+                      TitleText(text: supplier.nome, fontSize: 20),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
@@ -213,22 +217,9 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                                 color: LightColor.red,
                               ),
                               TitleText(
-                                text: "240",
-                                fontSize: 25,
+                                text: supplier.preco,
+                                fontSize: 24,
                               ),
-                            ],
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Icon(Icons.star,
-                                  color: LightColor.yellowColor, size: 17),
-                              Icon(Icons.star,
-                                  color: LightColor.yellowColor, size: 17),
-                              Icon(Icons.star,
-                                  color: LightColor.yellowColor, size: 17),
-                              Icon(Icons.star,
-                                  color: LightColor.yellowColor, size: 17),
-                              Icon(Icons.star_border, size: 17),
                             ],
                           ),
                         ],
@@ -236,14 +227,6 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                _availableSize(),
-                SizedBox(
-                  height: 20,
-                ),
-                _availableColor(),
                 SizedBox(
                   height: 20,
                 ),
@@ -351,11 +334,11 @@ class _ProductDetailPageState extends State<ProductDetailPage>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         TitleText(
-          text: "Available Size",
+          text: "Descrição",
           fontSize: 14,
         ),
         SizedBox(height: 20),
-        Text(AppData.description),
+        Text(supplier.descricao),
       ],
     );
   }

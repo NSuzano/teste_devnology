@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/controller/api.dart';
 import 'package:flutter_ecommerce_app/src/model/data.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
+import 'package:flutter_ecommerce_app/src/pages/product_detail.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
 import 'package:flutter_ecommerce_app/src/themes/theme.dart';
 import 'package:flutter_ecommerce_app/src/widgets/product_card.dart';
 import 'package:flutter_ecommerce_app/src/widgets/product_icon.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
+import 'package:get/get.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -92,17 +94,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 primary: false,
                 itemBuilder: (context, index) {
                   SupplierBR supplierBr = snapshot.data[index];
-                  return Column(
-                    children: [
-                      Image.network(supplierBr.imagem),
-                      ListTile(
-                        isThreeLine: true,
+                  return GestureDetector(
+                    onTap: () =>
+                        Get.to(ProductDetailPage(), arguments: supplierBr),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            supplierBr.imagem,
+                          ),
+                        ),
+                        ListTile(
+                          isThreeLine: true,
 
-                        title: Text(supplierBr.nome),
-                        subtitle: Text(supplierBr.preco),
-                        // subtitle: Text(supplierBr.name),
-                      ),
-                    ],
+                          title: Text(supplierBr.nome),
+                          subtitle: Text("\$" + "${supplierBr.preco}"),
+                          // subtitle: Text(supplierBr.name),
+                        ),
+                      ],
+                    ),
                   );
                 },
               ); //
