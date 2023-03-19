@@ -6,9 +6,15 @@ import 'package:flutter_ecommerce_app/src/widgets/customRoute.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'controller/di.dart';
 import 'src/themes/theme.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  Di di = Di();
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
