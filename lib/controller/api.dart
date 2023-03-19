@@ -17,4 +17,25 @@ class Api {
       throw Exception('Erro não foi possível carregar a lista');
     }
   }
+
+  Future<List<SupplierBR>> getProductSearch({String search}) async {
+    SupplierBR sup = SupplierBR();
+    List<SupplierBR> _result;
+
+    Uri url = Uri.parse(
+        'http://616d6bdb6dacbb001794ca17.mockapi.io/devnology/brazilian_provider?nome=$search');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+
+      List<SupplierBR> users = (json.decode(response.body) as List)
+          .map((data) => SupplierBR.fromJson(data))
+          .toList();
+
+      return users;
+    } else {
+      throw Exception('Erro não foi possível carregar a procura de produtos');
+    }
+  }
 }
