@@ -3,10 +3,10 @@ class SupplierBR {
   String descricao;
   String categoria;
   String imagem;
-  String preco;
+  double preco;
   String material;
   String departamento;
-  String id;
+  int id;
   String name;
 
   SupplierBR(
@@ -25,10 +25,10 @@ class SupplierBR {
     descricao = json['descricao'];
     categoria = json['categoria'];
     imagem = json['imagem'];
-    preco = json['preco'];
+    preco = double.parse(json['preco']);
     material = json['material'];
     departamento = json['departamento'];
-    id = json['id'];
+    id = int.parse(json['id']);
     name = json['name'];
   }
 
