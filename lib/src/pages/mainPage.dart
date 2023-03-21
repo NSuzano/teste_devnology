@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/src/pages/cart_screen.dart';
 import 'package:flutter_ecommerce_app/src/pages/home_page.dart';
 import 'package:flutter_ecommerce_app/src/pages/shopping_cart_page.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_ecommerce_app/src/themes/theme.dart';
 import 'package:flutter_ecommerce_app/src/widgets/BottomNavigationBar/bottom_navigation_bar.dart';
 import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
+import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key, this.title}) : super(key: key);
@@ -42,7 +44,9 @@ class _MainPageState extends State<MainPage> {
               ),
               child: Image.asset("assets/user.png"),
             ),
-          ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(13)))
+          ).ripple(() {
+            Get.to(ShoppingCartPage());
+          }, borderRadius: BorderRadius.all(Radius.circular(13)))
         ],
       ),
     );
