@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/controller/api.dart';
 import 'package:flutter_ecommerce_app/src/model/category.dart';
+import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
 import 'package:flutter_ecommerce_app/src/themes/theme.dart';
 import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
@@ -11,6 +13,21 @@ class ProductIcon extends StatelessWidget {
   final ValueChanged<Category> onSelected;
   final Category model;
   ProductIcon({Key key, this.model, this.onSelected}) : super(key: key);
+  Api api = Api();
+  Future<List<SupplierBR>> produtosBr;
+  List categorias;
+
+  getListCategoria() async {
+    produtosBr = api.produtosBrLista();
+    categorias = await produtosBr;
+
+    return categorias[0];
+  }
+
+  @override
+  void initState() {
+    getListCategoria();
+  }
 
   Widget build(BuildContext context) {
     return model.id == null
