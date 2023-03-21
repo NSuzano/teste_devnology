@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/controller/cart_controller.dart';
 import 'package:flutter_ecommerce_app/src/model/data.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
+import 'package:flutter_ecommerce_app/src/pages/shopping_cart_page.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
 import 'package:flutter_ecommerce_app/src/themes/theme.dart';
 import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
@@ -19,6 +21,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
   AnimationController controller;
   Animation<double> animation;
   SupplierBR supplier = Get.arguments;
+  final cartController = Get.put(CartController());
 
   @override
   void initState() {
@@ -217,8 +220,8 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                                 color: LightColor.red,
                               ),
                               TitleText(
-                                text: supplier.preco,
-                                fontSize: 24,
+                                text: supplier.preco.toString(),
+                                fontSize: 20,
                               ),
                             ],
                           ),
@@ -345,7 +348,9 @@ class _ProductDetailPageState extends State<ProductDetailPage>
 
   FloatingActionButton _flotingButton() {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+        cartController.addProduct(supplier);
+      },
       backgroundColor: LightColor.orange,
       child: Icon(Icons.shopping_basket,
           color: Theme.of(context).floatingActionButtonTheme.backgroundColor),
