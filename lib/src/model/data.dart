@@ -66,7 +66,6 @@ class AppData {
     //     category: "Trending Now"),
   ];
   static List<Category> categoryList = [
-    Category(),
     Category(
         id: 1,
         name: "Sneakers",
