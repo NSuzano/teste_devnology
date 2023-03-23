@@ -1,0 +1,24 @@
+{
+  "name": "teste_devnology",
+  "version": "1.0.0",
+  "description": "E-Commerce app is a design implementaion of [E-commerce App](https://dribbble.com/shots/10446127-E-commerce-App-Exploration/attachments/2283107?mode=media) designed by [Imran](https://dribbble.com/Saif_Uddin_Imran)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NSuzano/teste_devnology.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NSuzano/teste_devnology/issues"
+  },
+  "homepage": "https://github.com/NSuzano/teste_devnology#readme"
+}
