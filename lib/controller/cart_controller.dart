@@ -11,9 +11,9 @@ class CartController extends GetxController {
       _products[supplier] = 1;
     }
 
-    Get.snackbar("Produto Adicionado",
-        "Você adicionou o produto ${supplier.nome} ao carrinho",
-        snackPosition: SnackPosition.TOP, duration: Duration(seconds: 1));
+    // Get.snackbar("Produto Adicionado",
+    //     "Você adicionou o produto ${supplier.nome} ao carrinho",
+    //     snackPosition: SnackPosition.BOTTOM, duration: Duration(seconds: 1));
   }
 
   void removeProduct(SupplierBR supplier) {
