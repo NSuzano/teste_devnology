@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/controller/cart_controller.dart';
+import 'package:flutter_ecommerce_app/controller/http.dart';
 import 'package:flutter_ecommerce_app/src/model/data.dart';
 import 'package:flutter_ecommerce_app/src/model/product.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
@@ -9,35 +10,63 @@ import 'package:flutter_ecommerce_app/src/widgets/cart_total.dart';
 import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:get/get.dart';
 
+import '../model/order.dart';
+
 class ShoppingCartPage extends StatelessWidget {
   final CartController controller = Get.find();
+  final Product product = Product(1, "TESTETotal", 2.35);
+  Http http = Http();
 
   ShoppingCartPage({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Obx(() => SizedBox(
-          height: 600,
-          child: Column(
-            children: [
-              ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemCount: controller.products.length,
-                  itemBuilder: (context, index) {
-                    return CartProductCard(
-                      controller: controller,
-                      sup: controller.products.keys.toList()[index],
-                      quant: controller.products.values.toList()[index],
-                      index: index,
-                    );
-                  }),
-              SizedBox(
-                height: 50,
+    return Obx(() => Column(
+          children: [
+            Container(
+              child: SizedBox(
+                height: 300,
+                child: Scrollbar(
+                  thickness: 10,
+                  child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: controller.products.length,
+                      itemBuilder: (context, index) {
+                        return CartProductCard(
+                          controller: controller,
+                          sup: controller.products.keys.toList()[index],
+                          quant: controller.products.values.toList()[index],
+                          index: index,
+                        );
+                      }),
+                ),
               ),
-              CartTotal()
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            CartTotal(),
+            SizedBox(
+              height: 50,
+            ),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: LightColor.orange,
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                ),
+                onPressed: () {
+                  List<Order> orders = [];
+                  Order order = Order(1, product, 5, 265.00);
+
+                  orders.add(order);
+                  print("teste lista");
+                  print(orders[0].product.nome);
+                  http.makeUserPostRequest(orders);
+                },
+                child: Text(
+                  "Comprar",
+                  style: AppTheme.h3Style,
+                ))
+          ],
         ));
   }
 }
@@ -73,39 +102,17 @@ class CartProductCard extends StatelessWidget {
               },
               icon: Icon(Icons.remove_circle_outline)),
           Text(quant.toString()),
-          IconButton(
-              onPressed: () {
-                controller.addProduct(sup);
-              },
-              icon: Icon(Icons.add_circle_outline_outlined)),
+          Flexible(
+            child: IconButton(
+                onPressed: () {
+                  controller.addProduct(sup);
+                },
+                icon: Icon(Icons.add_circle_outline_outlined)),
+          ),
         ],
       ),
     );
   }
-}
-
-Widget _cartTotal(SupplierBR model) {
-  final CartController controller = Get.find();
-
-  return Obx(
-    () => Container(
-      color: Colors.red,
-      padding: EdgeInsets.symmetric(horizontal: 75),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Total",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            "${controller.total}",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          )
-        ],
-      ),
-    ),
-  );
 }
 
 // class ShoppingCartPage extends StatelessWidget {
@@ -186,23 +193,23 @@ Widget _item(SupplierBR model) {
   );
 }
 
-Widget _price(SupplierBR model) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-      TitleText(
-        text: '${AppData.cartList.length} Items',
-        color: LightColor.grey,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-      ),
-      TitleText(
-        text: '\$${model.preco}',
-        fontSize: 18,
-      ),
-    ],
-  );
-}
+// Widget _price(SupplierBR model) {
+//   return Row(
+//     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//     children: <Widget>[
+//       TitleText(
+//         text: '${AppData.cartList.length} Items',
+//         color: LightColor.grey,
+//         fontSize: 14,
+//         fontWeight: FontWeight.w500,
+//       ),
+//       TitleText(
+//         text: '\$${model.preco}',
+//         fontSize: 18,
+//       ),
+//     ],
+//   );
+// }
 
 //   Widget _submitButton(BuildContext context) {
 //     return TextButton(
