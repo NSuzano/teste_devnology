@@ -1,12 +1,12 @@
 class SupplierEU {
-  bool hasDiscount;
+  String hasDiscount;
   String name;
   List<String> gallery;
   String description;
-  String price;
-  String discountValue;
+  double price;
+  double discountValue;
   Details details;
-  String id;
+  int id;
 
   SupplierEU(
       {this.hasDiscount,
