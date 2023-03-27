@@ -10,7 +10,7 @@ import 'package:flutter_ecommerce_app/src/widgets/cart_total.dart';
 import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:get/get.dart';
 
-import '../model/order.dart';
+import '../model/order_br.dart';
 
 class ShoppingCartPage extends StatelessWidget {
   final CartController controller = Get.find();
@@ -54,13 +54,29 @@ class ShoppingCartPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 ),
                 onPressed: () {
-                  List<Order> orders = [];
-                  Order order = Order(1, product, 5, 265.00);
+                  List<SupplierBR> supListKey = [];
+                  List<int> supListValue = [];
+                  SupplierBR sup = SupplierBR();
 
-                  orders.add(order);
-                  print("teste lista");
-                  print(orders[0].product.nome);
-                  http.makeUserPostRequest(orders);
+                  if (controller.products.value.length != 0 ||
+                      controller.products.value.length != "") {
+                    int i = 0;
+
+                    for (i = 0; i < controller.products.value.length; i++) {
+                      supListKey.add(controller.products.keys.toList()[i]);
+                      supListValue.add(controller.products.values.toList()[i]);
+                      print("Iteração: $i");
+                      print(supListValue[i]);
+
+                      http.makeProductPostRequest(supListKey[i]);
+
+                      http.makeOrderPostRequest(
+                          1, supListValue[i], double.parse(controller.total));
+
+                      // http.makeOrderPostRequest(1, supListValue[i], null,
+                      //     double.parse(controller.total));
+                    }
+                  }
                 },
                 child: Text(
                   "Comprar",
@@ -90,12 +106,12 @@ class CartProductCard extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 40,
-            backgroundImage: NetworkImage(sup.imagem),
+            backgroundImage: NetworkImage(sup.imagem_supplier_br),
           ),
           SizedBox(
             width: 20,
           ),
-          Text(sup.nome),
+          Text(sup.nome_supplier_br),
           IconButton(
               onPressed: () {
                 controller.removeProduct(sup);
@@ -151,7 +167,7 @@ Widget _item(SupplierBR model) {
               Positioned(
                 left: -20,
                 bottom: -20,
-                child: Image.network(model.imagem),
+                child: Image.network(model.imagem_supplier_br),
               )
             ],
           ),
@@ -159,7 +175,7 @@ Widget _item(SupplierBR model) {
         Expanded(
             child: ListTile(
                 title: TitleText(
-                  text: model.name,
+                  text: model.nome_supplier_br,
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
                 ),
@@ -171,7 +187,7 @@ Widget _item(SupplierBR model) {
                       fontSize: 12,
                     ),
                     TitleText(
-                      text: model.preco.toString(),
+                      text: model.preco_supplier_br.toString(),
                       fontSize: 14,
                     ),
                   ],
@@ -184,7 +200,7 @@ Widget _item(SupplierBR model) {
                       color: LightColor.lightGrey.withAlpha(150),
                       borderRadius: BorderRadius.circular(10)),
                   child: TitleText(
-                    text: 'x${model.id}',
+                    text: 'x${model.nome_supplier_br}',
                     fontSize: 12,
                   ),
                 )))

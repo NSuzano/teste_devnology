@@ -27,12 +27,12 @@ class CartController extends GetxController {
   get products => _products;
 
   get productSubtotal => _products.entries
-      .map((product) => product.key.preco * product.value)
+      .map((product) => product.key.preco_supplier_br * product.value)
       .toList();
 
   get total => _products.entries.isNotEmpty
       ? _products.entries
-          .map((product) => product.key.preco * product.value)
+          .map((product) => product.key.preco_supplier_br * product.value)
           .toList()
           .reduce((value, element) => value + element)
           .toStringAsFixed(2)
