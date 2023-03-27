@@ -116,14 +116,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(
-                            supplierBr.imagem,
+                            supplierBr.imagem_supplier_br,
                           ),
                         ),
                         ListTile(
                           isThreeLine: true,
 
-                          title: Text(supplierBr.nome),
-                          subtitle: Text("\$" + "${supplierBr.preco}"),
+                          title: Text(supplierBr.nome_supplier_br),
+                          subtitle:
+                              Text("\$" + "${supplierBr.preco_supplier_br}"),
                           // subtitle: Text(supplierBr.name),
                         ),
                       ],
