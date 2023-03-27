@@ -59,7 +59,9 @@ router.get('/orders/:id', (req, res) => {
 });
 
 router.get('/clients', (req, res) => {
-    mysqlConnection.query('select * from clients;', (error, rows, fields) => {
+    const {email_clients, senha_clients} = req.params;
+
+    mysqlConnection.query('select id_clients from clients where email_clients = ? and senha_clients =?;', [email_clients, senha_clients] , (error, rows, fields) => {
         if(!error){
             res.json(rows);
         }
@@ -109,9 +111,9 @@ router.get('/supplier_eu/:id', (req, res) => {
 
 // POST
 router.post('/productbr', (req, res) => {
-    const {nome_supplier_br, preco_supplier_br, descricao_supplier_br, categoria_supplier_br, imagem_supplier_br, material_supplier_br, departamento_supplier_br} = req.body;
+    const {nome_supplier_br, descricao_supplier_br, categoria_supplier_br, imagem_supplier_br, preco_supplier_br, material_supplier_br, departamento_supplier_br} = req.body;
     console.log(req.log);
-    mysqlConnection.query('INSERT INTO supplier_br(nome_supplier_br, preco_supplier_br, descricao_supplier_br, categoria_supplier_br, imagem_supplier_br, material_supplier_br, departamento_supplier_br) values(?,?,?,?,?,?,?);', [nome_supplier_br, preco_supplier_br, descricao_supplier_br, categoria_supplier_br, imagem_supplier_br, material_supplier_br, departamento_supplier_br], (error, rows, fields) => {
+    mysqlConnection.query('INSERT INTO supplier_br(nome_supplier_br, descricao_supplier_br, categoria_supplier_br, imagem_supplier_br, preco_supplier_br, material_supplier_br, departamento_supplier_br) values(?,?,?,?,?,?,?);', [nome_supplier_br, descricao_supplier_br, categoria_supplier_br, imagem_supplier_br, preco_supplier_br, material_supplier_br, departamento_supplier_br], (error, rows, fields) => {
         if(!error){
             res.json({Status: 'Product Saved'});
         }
@@ -148,9 +150,9 @@ router.post('/clients', (req, res) => {
 });
 
 router.post('/order', (req, res) => {
-    const {total_order, quant_order, id_client, id_supplierbr, id_suppliereu} = req.body;
+    const {total_order_details, quant_order_details, id_clients, id_supplier_br, id_supplier_eu} = req.body;
     console.log(req.log);
-    mysqlConnection.query('INSERT INTO order_details(total_order_details, quant_order_details, id_clients, id_supplier_br, id_supplier_eu) values(?,?,?,?,?);', [total_order, quant_order, id_client, id_supplierbr, id_suppliereu], (error, rows, fields) => {
+    mysqlConnection.query('INSERT INTO order_details(total_order_details, quant_order_details, id_clients, id_supplier_br, id_supplier_eu) values(?,?,?,?,?);', [total_order_details, quant_order_details, id_clients, id_supplier_br, id_supplier_eu], (error, rows, fields) => {
         if(!error){
             res.json({Status: 'Order Saved'});
         }

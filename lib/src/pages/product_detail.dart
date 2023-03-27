@@ -124,7 +124,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
             fontSize: 160,
             color: LightColor.lightGrey,
           ),
-          Image.network(supplier.imagem)
+          Image.network(supplier.imagem_supplier_br)
         ],
       ),
     );
@@ -207,7 +207,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      TitleText(text: supplier.nome, fontSize: 20),
+                      TitleText(text: supplier.nome_supplier_br, fontSize: 20),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
@@ -220,7 +220,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                                 color: LightColor.red,
                               ),
                               TitleText(
-                                text: supplier.preco.toString(),
+                                text: supplier.preco_supplier_br.toString(),
                                 fontSize: 20,
                               ),
                             ],
@@ -341,7 +341,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
           fontSize: 14,
         ),
         SizedBox(height: 20),
-        Text(supplier.descricao),
+        Text(supplier.descricao_supplier_br),
       ],
     );
   }
