@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/src/config/route.dart';
 import 'package:flutter_ecommerce_app/src/model/product.dart';
+import 'package:flutter_ecommerce_app/src/pages/login_page.dart';
 import 'package:flutter_ecommerce_app/src/pages/mainPage.dart';
 import 'package:flutter_ecommerce_app/src/pages/product_detail.dart';
 import 'package:flutter_ecommerce_app/src/widgets/customRoute.dart';
@@ -20,48 +21,27 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  Http http = Http();
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: Stream.fromFuture(http.getProducts()),
-      builder: (context, response) {
-        if (!response.hasData) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (response.hasError) {
-          return Center(
-            child: Text(response.error),
-          );
+    return GetMaterialApp(
+      title: 'E-Commerce ',
+      theme: AppTheme.lightTheme.copyWith(
+        textTheme: GoogleFonts.mulishTextTheme(
+          Theme.of(context).textTheme,
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+      routes: Routes.getRoute(),
+      onGenerateRoute: (RouteSettings settings) {
+        if (settings.name.contains('detail')) {
+          return CustomRoute<bool>(
+              builder: (BuildContext context) => ProductDetailPage());
         } else {
-          return MultiProvider(
-            providers: [
-              Provider<List<Product>>.value(value: response.data),
-            ],
-            child: GetMaterialApp(
-              title: 'E-Commerce ',
-              theme: AppTheme.lightTheme.copyWith(
-                textTheme: GoogleFonts.mulishTextTheme(
-                  Theme.of(context).textTheme,
-                ),
-              ),
-              debugShowCheckedModeBanner: false,
-              routes: Routes.getRoute(),
-              onGenerateRoute: (RouteSettings settings) {
-                if (settings.name.contains('detail')) {
-                  return CustomRoute<bool>(
-                      builder: (BuildContext context) => ProductDetailPage());
-                } else {
-                  return CustomRoute<bool>(
-                      builder: (BuildContext context) => MainPage());
-                }
-              },
-              initialRoute: "MainPage",
-            ),
-          );
+          return CustomRoute<bool>(
+              builder: (BuildContext context) => LoginPage());
         }
       },
+      initialRoute: "MainPage",
     );
   }
 }
