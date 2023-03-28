@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
@@ -16,6 +17,7 @@ class Http {
   final orderurl = 'order/';
   final supplierbr = 'productbr/';
   final suppliereu = 'producteu/';
+  final clients = 'clients/';
   final lastproducts = 'lastproducts/';
   final headers = {'Content-Type': 'application/json'};
   final encoding = Encoding.getByName('utf-8');
@@ -78,6 +80,27 @@ class Http {
     print(response.body);
     print(
         'Estado da Resposta ${response.statusCode} => ${getstatusCode(response.statusCode)}');
+  }
+
+  checkUserRequest(String email, String senha) async {
+    print('$url?$email&$senha');
+    http.Response response = await http.get(
+        Uri.parse('$url$clients?email_clients=$email&senha_clients=$senha'),
+        headers: headers);
+
+    print(response.body);
+    print(
+        'Estado da Resposta ${response.statusCode} => ${getstatusCode(response.statusCode)}');
+
+    final json = jsonDecode(response.body);
+
+    print(json);
+
+    if (json.length == 0) {
+      return 0;
+    } else {
+      return json[0]['id_clients'];
+    }
   }
 
   makeOrderPostRequest(int quant, int supbr, double total) async {

@@ -58,10 +58,11 @@ router.get('/orders/:id', (req, res) => {
     });
 });
 
-router.get('/clients', (req, res) => {
-    const {email_clients, senha_clients} = req.params;
+router.get('/clients/', (req, res) => {
+    const email_clients = req.query.email_clients;
+    const senha_clients = req.query.senha_clients;
 
-    mysqlConnection.query('select id_clients from clients where email_clients = ? and senha_clients =?;', [email_clients, senha_clients] , (error, rows, fields) => {
+    mysqlConnection.query('select id_clients from clients where email_clients = ? and senha_clients = ?;', [email_clients, senha_clients] , (error, rows, fields) => {
         if(!error){
             res.json(rows);
         }
