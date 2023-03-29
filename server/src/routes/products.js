@@ -72,6 +72,32 @@ router.get('/clients/', (req, res) => {
     });
 });
 
+router.get('/clientsid/', (req, res) => {
+    const id_clients = req.query.id_clients;
+
+    mysqlConnection.query('SELECT * FROM order_details INNER JOIN supplier_br ON supplier_br.id_supplier_br = order_details.id_supplier_br WHERE id_clients = ?;', [id_clients] , (error, rows, fields) => {
+        if(!error){
+            res.json(rows);
+        }
+        else {
+            console.log(error);
+        }
+    });
+});
+
+router.get('/clientsinfo/', (req, res) => {
+    const id_clients = req.query.id_clients;
+
+    mysqlConnection.query('SELECT * FROM clients where id_clients = ?;', [id_clients] , (error, rows, fields) => {
+        if(!error){
+            res.json(rows);
+        }
+        else {
+            console.log(error);
+        }
+    });
+});
+
 router.get('/clients/:id', (req, res) => {
     const {id} = req.params;
 
