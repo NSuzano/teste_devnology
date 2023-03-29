@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/controller/bo.dart';
 import 'package:flutter_ecommerce_app/controller/http.dart';
 import 'package:flutter_ecommerce_app/src/model/product.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
+
+import '../model/clients.dart';
+import '../themes/light_color.dart';
 
 class SellProducts extends StatefulWidget {
   @override
@@ -12,18 +17,28 @@ class SellProducts extends StatefulWidget {
 class _SellProductsState extends State<SellProducts> {
   List<Product> products = [];
   Http http = Http();
+  var data = Get.arguments;
+
+  List listOrder = [];
+
+  Future getOrder() async {
+    listOrder = await http.getOrderClient(data);
+
+    print("LISTA$listOrder");
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (products.isEmpty) {
-      setState(() {
-        products = Provider.of<List<Product>>(context);
-      });
-    }
+    // if (products.isEmpty) {
+    //   setState(() {
+    //     products = Provider.of<List<Product>>(context);
+    //   });
+    // }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Total Vendas",
+          "Produtos Comprados",
           style: TextStyle(color: Colors.black),
         ),
         toolbarHeight: 100, // Set this height
@@ -49,7 +64,7 @@ class _SellProductsState extends State<SellProducts> {
         ],
         backgroundColor: Color(0xfffbfbfb),
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: LightColor.iconColor),
       ),
       body: Center(
         child: Padding(
@@ -61,32 +76,65 @@ class _SellProductsState extends State<SellProducts> {
   }
 
   Widget _buildList(BuildContext context) {
-    return ListView.builder(
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          products.sort((a, b) => a.id.compareTo(b.id));
-          return ExpansionTile(
-            leading: CircleAvatar(
-              radius: 20.0,
-              child: Text(
-                "${products[index].id}",
-                style: TextStyle(fontSize: 20.0),
-              ),
-            ),
-            title: Text("${products[index].nome}"),
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return FutureBuilder(
+      future: getOrder(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return CircularProgressIndicator();
+        } else if (snapshot.connectionState == ConnectionState.done) {
+          return ListView.builder(
+              itemCount: listOrder.length,
+              itemBuilder: (context, index) {
+                if (listOrder.length == 0) {
+                  return Container();
+                }
+                return ExpansionTile(
+                  leading: CircleAvatar(
+                      radius: 20.0,
+                      child: Image.network(
+                        listOrder[index]['imagem_supplier_br'],
+                      )),
+                  title: Text("${listOrder[index]['nome_supplier_br']}"),
+                  subtitle:
+                      Text("\$ ${listOrder[index]['preco_supplier_br']},00"),
                   children: [
-                    raisedButton('Update', fontSize: 15.0),
-                    raisedButton('Delete', fontSize: 15.0),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Column(
+                        children: [
+                          Text(
+                            "Descrição: ${listOrder[index]['descricao_supplier_br']}",
+                            textAlign: TextAlign.justify,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Departamento: ${listOrder[index]['departamento_supplier_br']}",
+                            textAlign: TextAlign.end,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Material: ${listOrder[index]['material_supplier_br']}",
+                            textAlign: TextAlign.justify,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Quantidade: ${listOrder[index]['quant_order_details']}",
+                            textAlign: TextAlign.justify,
+                          ),
+                        ],
+                      ),
+                    )
                   ],
-                ),
-              )
-            ],
-          );
-        });
+                );
+              });
+        }
+      },
+    );
   }
 }
