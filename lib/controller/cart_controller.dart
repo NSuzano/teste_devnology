@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
 import 'package:get/get.dart';
 
@@ -11,9 +12,12 @@ class CartController extends GetxController {
       _products[supplier] = 1;
     }
 
-    // Get.snackbar("Produto Adicionado",
-    //     "Você adicionou o produto ${supplier.nome} ao carrinho",
-    //     snackPosition: SnackPosition.BOTTOM, duration: Duration(seconds: 1));
+    Get.snackbar("Produto Adicionado",
+        "Você adicionou o produto ${supplier.nome_supplier_br} ao carrinho",
+        snackPosition: SnackPosition.TOP,
+        duration: Duration(seconds: 1),
+        margin: EdgeInsets.all(50.0),
+        backgroundColor: Colors.grey[300]);
   }
 
   void removeProduct(SupplierBR supplier) {
@@ -25,6 +29,10 @@ class CartController extends GetxController {
   }
 
   get products => _products;
+
+  void zeroProduct() {
+    _products = {}.obs;
+  }
 
   get productSubtotal => _products.entries
       .map((product) => product.key.preco_supplier_br * product.value)
