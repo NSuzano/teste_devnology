@@ -1,5 +1,5 @@
 class SupplierEU {
-  String hasDiscount;
+  bool hasDiscount;
   String name;
   List<String> gallery;
   String description;
@@ -23,11 +23,11 @@ class SupplierEU {
     name = json['name'];
     gallery = json['gallery'].cast<String>();
     description = json['description'];
-    price = json['price'];
-    discountValue = json['discountValue'];
+    price = double.parse(json['price']);
+    discountValue = double.parse(json['discountValue']);
     details =
         json['details'] != null ? new Details.fromJson(json['details']) : null;
-    id = json['id'];
+    id = int.parse(json['id']);
   }
 
   Map<String, dynamic> toJson() {
