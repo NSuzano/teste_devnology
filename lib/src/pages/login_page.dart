@@ -18,6 +18,28 @@ class _LoginPageState extends State<LoginPage> {
   Http http = Http();
   final _formKey = GlobalKey<FormState>();
 
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // retorna um objeto do tipo Dialog
+        return AlertDialog(
+          title: new Text("Erro"),
+          content: new Text("Email/Senha não encontrado"),
+          actions: <Widget>[
+            // define os botões na base do dialogo
+            new ElevatedButton(
+              child: new Text("Fechar"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,8 +135,10 @@ class _LoginPageState extends State<LoginPage> {
                             controllerEmail.text, controllersenha.text);
 
                         if (id != 0) {
-                          Get.to(MainPage());
+                          print("ID: $id");
+                          Get.to(MainPage(), arguments: id);
                         } else {
+                          _showDialog();
                           print("NAO");
                         }
                       }
