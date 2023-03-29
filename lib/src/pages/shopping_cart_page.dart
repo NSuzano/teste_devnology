@@ -4,6 +4,8 @@ import 'package:flutter_ecommerce_app/controller/http.dart';
 import 'package:flutter_ecommerce_app/src/model/data.dart';
 import 'package:flutter_ecommerce_app/src/model/product.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
+import 'package:flutter_ecommerce_app/src/pages/home_page.dart';
+import 'package:flutter_ecommerce_app/src/pages/mainPage.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
 import 'package:flutter_ecommerce_app/src/themes/theme.dart';
 import 'package:flutter_ecommerce_app/src/widgets/cart_total.dart';
@@ -16,6 +18,7 @@ class ShoppingCartPage extends StatelessWidget {
   final CartController controller = Get.find();
   final Product product = Product(1, "TESTETotal", 2.35);
   Http http = Http();
+  var data = Get.arguments;
 
   ShoppingCartPage({Key key}) : super(key: key);
   @override
@@ -56,8 +59,7 @@ class ShoppingCartPage extends StatelessWidget {
                 onPressed: () {
                   List<SupplierBR> supListKey = [];
                   List<int> supListValue = [];
-                  SupplierBR sup = SupplierBR();
-
+                  print(controller.products.value.length);
                   if (controller.products.value.length != 0 ||
                       controller.products.value.length != "") {
                     int i = 0;
@@ -75,6 +77,19 @@ class ShoppingCartPage extends StatelessWidget {
 
                       // http.makeOrderPostRequest(1, supListValue[i], null,
                       //     double.parse(controller.total));
+                    }
+
+                    if (controller.products.value.length != 0) {
+                      Get.snackbar(
+                          "Pedido Concluído", "Você fez a compra dos produtos.",
+                          snackPosition: SnackPosition.TOP,
+                          duration: Duration(seconds: 1),
+                          margin: EdgeInsets.all(50.0),
+                          backgroundColor: Colors.grey[300]);
+
+                      controller.zeroProduct();
+
+                      Get.offAll(MainPage(), arguments: data);
                     }
                   }
                 },
