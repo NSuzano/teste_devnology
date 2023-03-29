@@ -74,9 +74,6 @@ class ShoppingCartPage extends StatelessWidget {
 
                       http.makeOrderPostRequest(
                           1, supListValue[i], double.parse(controller.total));
-
-                      // http.makeOrderPostRequest(1, supListValue[i], null,
-                      //     double.parse(controller.total));
                     }
 
                     if (controller.products.value.length != 0) {
