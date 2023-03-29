@@ -10,17 +10,22 @@ import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 import 'package:get/get.dart';
 
+import '../../controller/http.dart';
+
 class MainPage extends StatefulWidget {
   MainPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MainPageState createState() => _MainPageState();
+  MainPageState createState() => MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class MainPageState extends State<MainPage> {
   bool isHomePageSelected = true;
+  var data = Get.arguments;
+  List clientinfo = [];
+  Http http = Http();
 
   Widget _appBar() {
     return Container(
@@ -47,7 +52,7 @@ class _MainPageState extends State<MainPage> {
               child: Image.asset("assets/user.png"),
             ),
           ).ripple(() {
-            Get.to(ShoppingCartPage());
+            Get.to(ShoppingCartPage(), arguments: data);
           }, borderRadius: BorderRadius.all(Radius.circular(13)))
         ],
       ),
@@ -66,7 +71,7 @@ class _MainPageState extends State<MainPage> {
         color: color,
       ),
     ).ripple(() {
-      Get.to(SellProducts());
+      Get.to(SellProducts(), arguments: data);
     }, borderRadius: BorderRadius.all(Radius.circular(13)));
   }
 
@@ -122,7 +127,7 @@ class _MainPageState extends State<MainPage> {
     return Material(
       child: InkWell(
         onTap: () {
-          Get.to(SellProducts());
+          Get.to(SellProducts(), arguments: data);
         },
         child: Padding(
           padding: EdgeInsets.all(15.0),
@@ -174,11 +179,11 @@ class _MainPageState extends State<MainPage> {
                 )),
           ),
           Text(
-            "Texto",
+            "User",
             style: TextStyle(color: Colors.black, fontSize: 20),
           ),
           Text(
-            "asdas@asdasdsa",
+            "email@.com",
             style: TextStyle(color: Colors.black54, fontSize: 14),
           ),
         ],
@@ -188,6 +193,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    print("DATA : $data");
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100, // Set this height
