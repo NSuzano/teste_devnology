@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/controller/api.dart';
 import 'package:flutter_ecommerce_app/src/model/data.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
+import 'package:flutter_ecommerce_app/src/model/supplier2.dart';
 import 'package:flutter_ecommerce_app/src/pages/product_detail.dart';
 import 'package:flutter_ecommerce_app/src/pages/search_page.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
@@ -26,6 +27,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Api api = Api();
   Future<List<SupplierBR>> produtosBr;
+  Future<List<SupplierEU>> produtosEu;
 
   Widget _icon(IconData icon, {Color color = LightColor.iconColor}) {
     return Container(
@@ -45,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     produtosBr = api.produtosBrLista();
+    produtosEu = api.produtosEuLista();
   }
 
   // Widget _categoryWidget() {
@@ -54,35 +57,33 @@ class _MyHomePageState extends State<MyHomePage> {
   //     height: 80,
   //     child: FutureBuilder(
   //         future: produtosBr,
-  //       builder: (context, snapshot){
-  //         return  ListView.builder(
-  //           scrollDirection: Axis.horizontal,
-  //           itemCount: snapshot.data.length,
-  //           itemBuilder: (context, index) {
-  //           List supplierBr = snapshot.data[index];
+  //         builder: (context, snapshot) {
+  //           return ListView.builder(
+  //               scrollDirection: Axis.horizontal,
+  //               itemCount: 3,
+  //               itemBuilder: (context, index) {
+  //                 List supplierBr = snapshot.data[index];
 
-  //             return ListView(
-  //               children: ,
-  //             )
-  //         });
-  //       }),
+  //                 return ListView(children: []);
+  //               });
+  //         }),
   //     // child: ListView(
   //     //   scrollDirection: Axis.horizontal,
-  //       // children: AppData.categoryList
-  //       //     .map(
-  //       //       (category) => ProductIcon(
-  //       //         model: category,
-  //       //         onSelected: (model) {
-  //       //           setState(() {
-  //       //             AppData.categoryList.forEach((item) {
-  //       //               item.isSelected = false;
-  //       //             });
-  //       //             model.isSelected = true;
-  //       //           });
-  //       //         },
-  //       //       ),
-  //       //     )
-  //       //     .toList(),
+  //     // children: AppData.categoryList
+  //     //     .map(
+  //     //       (category) => ProductIcon(
+  //     //         model: category,
+  //     //         onSelected: (model) {
+  //     //           setState(() {
+  //     //             AppData.categoryList.forEach((item) {
+  //     //               item.isSelected = false;
+  //     //             });
+  //     //             model.isSelected = true;
+  //     //           });
+  //     //         },
+  //     //       ),
+  //     //     )
+  //     //     .toList(),
   //     // ),
   //   );
   // }
