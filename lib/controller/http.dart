@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:flutter_ecommerce_app/src/model/product.dart';
 import 'package:flutter_ecommerce_app/controller/bo.dart';
 
+import '../src/model/clients.dart';
 import '../src/model/order_br.dart';
 
 class Http {
@@ -18,6 +19,7 @@ class Http {
   final supplierbr = 'productbr/';
   final suppliereu = 'producteu/';
   final clients = 'clients/';
+  final clientsid = 'clientsid/';
   final lastproducts = 'lastproducts/';
   final headers = {'Content-Type': 'application/json'};
   final encoding = Encoding.getByName('utf-8');
@@ -83,7 +85,6 @@ class Http {
   }
 
   checkUserRequest(String email, String senha) async {
-    print('$url?$email&$senha');
     http.Response response = await http.get(
         Uri.parse('$url$clients?email_clients=$email&senha_clients=$senha'),
         headers: headers);
@@ -101,6 +102,51 @@ class Http {
     } else {
       return json[0]['id_clients'];
     }
+  }
+
+  getOrderClient(int id_clients) async {
+    http.Response response = await http.get(
+        Uri.parse('$url$clientsid?id_clients=$id_clients'),
+        headers: headers);
+
+    print(response.body);
+    print(
+        'Estado da Resposta ${response.statusCode} => ${getstatusCode(response.statusCode)}');
+
+    final json = jsonDecode(response.body);
+
+    print(json);
+
+    if (json.length == 0) {
+      return 0;
+    } else {
+      return json;
+    }
+  }
+
+  getInfoClients(int id_clients) async {
+    http.Response response = await http.get(
+        Uri.parse('$url$clientsid?id_clients=$id_clients'),
+        headers: headers);
+
+    print(response.body);
+    print(
+        'Estado da Resposta ${response.statusCode} => ${getstatusCode(response.statusCode)}');
+
+    final json = jsonDecode(response.body);
+
+    print(json);
+    return json;
+  }
+
+  postClientRequest(Clients client) async {
+    String body = json.encode(client.toJson());
+    http.Response response = await http.post(Uri.parse('$url$clients'),
+        headers: headers, body: body, encoding: encoding);
+
+    print(response.body);
+    print(
+        'Estado da Resposta ${response.statusCode} => ${getstatusCode(response.statusCode)}');
   }
 
   makeOrderPostRequest(int quant, int supbr, double total) async {
