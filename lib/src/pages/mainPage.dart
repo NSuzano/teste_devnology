@@ -171,34 +171,73 @@ class MainPageState extends State<MainPage> {
     return FutureBuilder(
         future: _getinfo(),
         builder: (context, snapshot) {
-          return Container(
-            color: Colors.grey[400],
-            width: double.infinity,
-            height: 200,
-            padding: EdgeInsets.only(top: 20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  height: 70,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage("assets/user.png"),
-                      )),
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data == null) {
+              return Container(
+                color: Colors.grey[400],
+                width: double.infinity,
+                height: 200,
+                padding: EdgeInsets.only(top: 20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      height: 70,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/user.png"),
+                          )),
+                    ),
+                    Text(
+                      "asd",
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                    Text(
+                      "asd",
+                      style: TextStyle(color: Colors.black54, fontSize: 14),
+                    ),
+                  ],
                 ),
-                Text(
-                  snapshot.data[0]['nome_clients'],
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+              );
+            } else {
+              return Container(
+                color: Colors.grey[400],
+                width: double.infinity,
+                height: 200,
+                padding: EdgeInsets.only(top: 20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      height: 70,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage("assets/user.png"),
+                          )),
+                    ),
+                    Text(
+                      snapshot.data[0]['nome_clients'] == ""
+                          ? ""
+                          : snapshot.data[0]['nome_clients'],
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                    Text(
+                      snapshot.data[0]['email_clients'] == ""
+                          ? ""
+                          : snapshot.data[0]['email_clients'],
+                      style: TextStyle(color: Colors.black54, fontSize: 14),
+                    ),
+                  ],
                 ),
-                Text(
-                  snapshot.data[0]['email_clients'],
-                  style: TextStyle(color: Colors.black54, fontSize: 14),
-                ),
-              ],
-            ),
-          );
+              );
+            }
+          }
         });
   }
 
