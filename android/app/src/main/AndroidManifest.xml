@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.thealphamerc.flutter_ecommerce_app">
    <application
-        android:label="flutter_ecommerce_app"
+        android:label="teste_devnology"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
