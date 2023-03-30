@@ -116,49 +116,49 @@ String getstatusCode(int statusCode) {
     case 304:
       {
         result =
-            '$redireccion Esta es usada para propositos de "caché". Le indica al cliente que la respuesta no ha sido modificada. Entonces, el cliente puede continuar usando la misma versión almacenada en su caché.';
+            '$redireccion Isso é usado para fins de "caching". Indica ao cliente que a resposta não foi modificada. O cliente pode então continuar usando a mesma versão armazenada em seu cache.';
       }
       break;
     case 305:
       {
         result =
-            '$redireccion Fue definida en una versión previa de la especificación del protocolo HTTP para indicar que una respuesta solicitada debe ser accedida desde un proxy. Ha quedado obsoleta debido a preocupaciones de seguridad correspondientes a la configuración de un proxy.';
+            '$redireccion Foi definido em uma versão anterior da especificação do protocolo HTTP para indicar que uma resposta solicitada deve ser acessada de um proxy. Foi preterido devido a questões de segurança associadas à configuração de um proxy.';
       }
       break;
     case 306:
       {
         result =
-            '$redireccion Este código de respuesta ya no es usado más. Actualmente se encuentra reservado. Fue usado en previas versiones de la especificación HTTP1.1.';
+            '$redireccion Este código de resposta não é mais usado. No momento está reservado. Foi usado em versões anteriores da especificação HTTP1.1.';
       }
       break;
     case 307:
       {
         result =
-            '$redireccion El servidor envía esta respuesta para dirigir al cliente a obtener el recurso solicitado a otra URI con el mismo metodo que se uso la petición anterior. Tiene la misma semántica que el código de respuesta HTTP 302 Found, con la excepción de que el agente usuario no debe cambiar el método HTTP usado: si un POST fue usado en la primera petición, otro POST debe ser usado en la segunda petición.';
+            '$redireccion O servidor envia esta resposta para direcionar o cliente a obter o recurso solicitado para outro URI com o mesmo método da solicitação anterior. Tem a mesma semântica do código de resposta HTTP 302 Found, com a exceção de que o agente do usuário não deve alterar o método HTTP usado: se um POST foi usado na primeira solicitação, outro POST deve ser usado na segunda solicitação.';
       }
       break;
     case 308:
       {
         result =
-            '$redireccion Significa que el recurso ahora se encuentra permanentemente en otra URI, especificada por la respuesta de encabezado HTTP Location:. Tiene la misma semántica que el código de respuesta HTTP 301 Moved Permanently, con la excepción de que el agente usuario no debe cambiar el método HTTP usado: si un POST fue usado en la primera petición, otro POST debe ser usado en la segunda petición.';
+            '$redireccion Isso significa que o recurso agora está permanentemente localizado em outro URI, especificado pela localização: resposta do cabeçalho HTTP. Tem a mesma semântica do código de resposta HTTP 301 Moved Permanently, com a exceção de que o agente do usuário não deve alterar o método HTTP usado: se um POST foi usado na primeira solicitação, outro POST deve ser usado na segunda solicitação.';
       }
       break;
     case 400:
       {
         result =
-            '$ec Esta respuesta significa que el servidor no pudo interpretar la solicitud dada una sintaxis inválida.';
+            '$ec Essa resposta significa que o servidor não conseguiu interpretar a solicitação devido à sintaxe inválida.';
       }
       break;
     case 401:
       {
         result =
-            '$ec Es necesario autenticar para obtener la respuesta solicitada. Esta es similar a 403, pero en este caso, autenticación es posible.';
+            '$ec A autenticação é necessária para obter a resposta solicitada. Isso é semelhante ao 403, mas, neste caso, a autenticação é possível.';
       }
       break;
     case 402:
       {
         result =
-            '$ec Este código de respuesta está reservado para futuros usos. El objetivo inicial de crear este código fue para ser utilizado en sistemas digitales de pagos. Sin embargo, no está siendo usado actualmente.';
+            '$ec Este código de resposta é reservado para uso futuro. O objetivo inicial da criação desse código era para ser utilizado em sistemas de pagamento digital. No entanto, não está sendo usado atualmente.';
       }
       break;
     case 403:
