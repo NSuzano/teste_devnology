@@ -98,18 +98,6 @@ router.get('/clientsinfo/', (req, res) => {
     });
 });
 
-router.get('/clients/:id', (req, res) => {
-    const {id} = req.params;
-
-    mysqlConnection.query('select * from clients where id_clients = ?;', [id], (error, rows, fields) => {
-        if(!error){
-            res.json(rows);
-        }
-        else {
-            console.log(error);
-        }
-    });
-});
 
 router.get('/supplier_br/:id', (req, res) => {
     const {id} = req.params;
