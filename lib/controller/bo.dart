@@ -62,55 +62,55 @@ String getstatusCode(int statusCode) {
     case 205:
       {
         result =
-            '$rs La petición se ha completado con éxito, pero su respuesta no tiene contenidos y además, el agente de usuario tiene que inicializar la página desde la que se realizó la petición, este código es útil por ejemplo para páginas con formularios cuyo contenido debe borrarse después de que el usuario lo envíe.';
+            '$rs A requisição foi finalizada com sucesso, porém sua resposta não tem conteúdo e também o user agent tem que inicializar a página de onde a requisição foi feita, este código é útil por exemplo para páginas com formulários cujo conteúdo deve ser limpo depois para o usuário enviar.';
       }
       break;
     case 206:
       {
         result =
-            '$rs La petición servirá parcialmente el contenido solicitado. Esta característica es utilizada por herramientas de descarga como wget para continuar la transferencia de descargas anteriormente interrumpidas, o para dividir una descarga y procesar las partes simultáneamente.';
+            '$rs A solicitação servirá parcialmente o conteúdo solicitado. Esse recurso é usado por ferramentas de download como o wget para continuar a transferência de downloads interrompidos anteriormente ou para dividir um download e processar as partes simultaneamente.';
       }
       break;
     case 207:
       {
         result =
-            '$rs Una respuesta Multi-Estado transmite información sobre varios recursos en situaciones en las que varios códigos de estado podrían ser apropiados. El cuerpo de la petición es un mensaje XML.';
+            '$rs Uma resposta de vários status transmite informações sobre vários recursos em situações em que vários códigos de status podem ser apropriados. O corpo da solicitação é uma mensagem XML.';
       }
       break;
     case 208:
       {
         result =
-            '$rs El listado de elementos DAV ya se notificó previamente, por lo que no se van a volver a listar.';
+            '$rs A listagem de elementos DAV já foi notificada anteriormente, portanto não serão listados novamente.';
       }
       break;
     case 226:
       {
         result =
-            '$rs El servidor ha cumplido una petición GET para el recurso y la respuesta es una representación del resultado de una o más manipulaciones de instancia aplicadas a la instancia actual.';
+            '$rs O servidor atendeu a uma solicitação GET para o recurso e a resposta é uma representação do resultado de uma ou mais manipulações de instância aplicadas à instância atual.';
       }
       break;
     case 300:
       {
         result =
-            '$redireccion Esta solicitud tiene más de una posible respuesta. User-Agent o el usuario debe escoger uno de ellos. No hay forma estandarizado de seleccionar una de las respuestas.';
+            '$redireccion Esta solicitação tem mais de uma resposta possível. User-Agent ou o usuário deve escolher um deles. Não há uma maneira padronizada de selecionar uma das respostas.';
       }
       break;
     case 301:
       {
         result =
-            '$redireccion Este código de respuesta significa que la URI  del recurso solicitado ha sido cambiado. Probablemente una nueva URI sea devuelta en la respuesta.';
+            '$redireccion Esse código de resposta significa que o URI do recurso solicitado foi alterado. Um novo URI provavelmente será retornado na resposta.';
       }
       break;
     case 302:
       {
         result =
-            '$redireccion Este código de respuesta significa que el recurso de la URI solicitada ha sido cambiado temporalmente. Nuevos cambios en la URI serán agregados en el futuro. Por lo tanto, la misma URI debe ser usada por el cliente en futuras solicitudes.';
+            '$redireccion Esse código de resposta significa que o recurso de URI solicitado foi alterado temporariamente. Novas alterações de URI serão adicionadas no futuro. Portanto, a mesma URI deve ser utilizada pelo cliente em requisições futuras.';
       }
       break;
     case 303:
       {
         result =
-            '$redireccion El servidor envia esta respuesta para dirigir al cliente a un nuevo recurso solcitado a otra dirección usando una petición GET.';
+            '$redireccion O servidor envia esta resposta para direcionar o cliente a um novo recurso solicitado em outro endereço usando uma solicitação GET.';
       }
       break;
     case 304:
@@ -164,162 +164,161 @@ String getstatusCode(int statusCode) {
     case 403:
       {
         result =
-            '$ec El cliente no posee los permisos necesarios para cierto contenido, por lo que el servidor está rechazando otorgar una respuesta apropiada.';
+            '$ec O cliente não possui as permissões necessárias para determinado conteúdo, portanto o servidor se recusa a conceder uma resposta adequada.';
       }
       break;
     case 404:
       {
         result =
-            '$ec El servidor no pudo encontrar el contenido solicitado. Este código de respuesta es uno de los más famosos dada su alta ocurrencia en la web.';
+            '$ec O servidor não encontrou o conteúdo solicitado. Este código de resposta é um dos mais famosos devido à sua alta ocorrência na web.';
       }
       break;
     case 405:
       {
         result =
-            '$ec El método solicitado es conocido por el servidor pero ha sido deshabilitado y no puede ser utilizado. Los dos métodos obligatorios, GET y HEAD, nunca deben ser deshabilitados y no debiesen retornar este código de error.';
+            '$ec O método solicitado é conhecido pelo servidor, mas foi desativado e não pode ser usado. Os dois métodos obrigatórios, GET e HEAD, nunca devem ser desabilitados e não devem retornar este código de erro.';
       }
       break;
     case 406:
       {
         result =
-            '$ec Esta respuesta es enviada cuando el servidor, despues de aplicar una negociación de contenido servidor-impulsado, no encuentra ningún contenido seguido por la criteria dada por el usuario.';
+            '$ec Esta resposta é enviada quando o servidor, após aplicar uma negociação de conteúdo dirigida ao servidor, não encontra nenhum conteúdo que corresponda aos critérios fornecidos pelo usuário.';
       }
       break;
     case 407:
       {
         result =
-            '$ec Esto es similar al código 401, pero la autenticación debe estar hecha a partir de un proxy.';
+            '$ec Isso é semelhante ao código 401, mas a autenticação deve ser feita por meio de um proxy.';
       }
       break;
     case 408:
       {
         result =
-            '$ec Esta respuesta es enviada en una conexión inactiva en algunos servidores, incluso sin alguna petición previa por el cliente. Significa que el servidor quiere desconectar esta conexión sin usar. Esta respuesta es muy usada desde algunos navegadores, como Chrome, Firefox 27+, o IE9, usa mecanismos de pre-conexión HTTP para acelerar la navegación. También hay que tener cuenta que algunos servidores simplemente desconectan la conexión sin enviar este mensaje.';
+            '$ec Essa resposta é enviada em uma conexão ociosa em alguns servidores, mesmo sem nenhuma solicitação prévia do cliente. Isso significa que o servidor deseja desconectar esta conexão não utilizada. Essa resposta é amplamente utilizada, pois alguns navegadores, como Chrome, Firefox 27+ ou IE9, utilizam mecanismos de pré-conexão HTTP para agilizar a navegação. Lembre-se também de que alguns servidores simplesmente desconectam a conexão sem enviar esta mensagem.';
       }
       break;
     case 409:
       {
         result =
-            '$ec Esta respuesta puede ser enviada cuando una petición tiene conflicto con el estado actual del servidor.';
+            '$ec Essa resposta pode ser enviada quando uma solicitação entra em conflito com o estado atual do servidor.';
       }
       break;
     case 410:
       {
         result =
-            '$ec Esta respuesta puede ser enviada cuando el contenido solicitado ha sido borrado del servidor.';
+            '$ec Esta resposta pode ser enviada quando o conteúdo solicitado foi excluído do servidor.';
       }
       break;
     case 411:
       {
         result =
-            '$ec El servidor rechaza la petición porque el campo de encabezado Content-Length no esta definido y el servidor lo requiere.';
+            '$ec O servidor rejeita a solicitação porque o campo de cabeçalho Content-Length não está definido e o servidor o requer.';
       }
       break;
     case 412:
       {
         result =
-            '$ec El cliente ha indicado pre-condiciones en sus encabezados la cual el servidor no cumple.';
+            '$ec O cliente indicou pré-condições em seus cabeçalhos que o servidor não atende.';
       }
       break;
     case 413:
       {
         result =
-            '$ec La entidad de petición es más larga que los limites definidos por el servidor; el servidor puede cerrar la conexión o retornar un campo de encabezado Retry-After.';
+            '$ec A entidade de solicitação é maior que os limites definidos pelo servidor; o servidor pode fechar a conexão ou retornar um campo de cabeçalho Retry-After.';
       }
       break;
     case 414:
       {
         result =
-            '$ec La URI solicitada por el cliente es más larga que el servidor está dispuesto a interpretar.';
+            '$ec O URI solicitado pelo cliente é mais longo do que o servidor está disposto a interpretar.';
       }
       break;
     case 415:
       {
         result =
-            '$ec El formato multimedia de los datos solicitados no está soportada por el servidor, por lo cual el servidor rechaza la solicitud.';
+            '$ec O formato multimídia dos dados solicitados não é suportado pelo servidor, portanto o servidor rejeita a solicitação.';
       }
       break;
     case 416:
       {
         result =
-            '$ec El rango especificado por el campo de encabezado Range en la solicitud no cumple; es posible que el rango está fuera del tamaño de los datos objetivo del URI.';
+            '$ec O intervalo especificado pelo campo de cabeçalho Intervalo na solicitação não corresponde; é possível que o intervalo esteja fora do tamanho de dados de destino do URI.';
       }
       break;
     case 4017:
       {
         result =
-            '$ec Significa que la expectativa indicada por el campo de encabezado Expect solicitada no puede ser cumplida por el servidor.';
+            '$ec Isso significa que a expectativa indicada pelo campo de cabeçalho Expect solicitado não pode ser atendida pelo servidor.';
       }
       break;
     case 4018:
       {
-        result =
-            '$ec El servidor se reúsa a intentar hacer café con una tetera.';
+        result = '$ec O garçom se recusa a tentar fazer café com chaleira.';
       }
       break;
     case 421:
       {
         result =
-            '$ec La petición fue dirigida a un servidor que no es capaz de producir una respuesta. Esto puede ser enviado por un servidor que no esta configurado para producir respuestas por la combinación del esquema y la autoridad que estan incluidos en la URI solicitada';
+            '$ec A solicitação foi direcionada a um servidor que não é capaz de produzir uma resposta. Isso pode ser enviado por um servidor que não está configurado para produzir respostas devido à combinação de esquema e autoridade incluídos no URI solicitado.';
       }
       break;
     case 422:
       {
         result =
-            '$ec La petición estaba bien formada pero no se pudo seguir debido a errores de semántica.';
+            '$ec A solicitação foi bem formada, mas não pôde ser atendida devido a erros semânticos.';
       }
       break;
     case 423:
       {
-        result = '$ec El recurso que está siendo accedido está bloqueado.';
+        result = '$ec O recurso que está sendo acessado está bloqueado.';
       }
       break;
     case 424:
       {
         result =
-            '$ec La petición falló debido a una falla de una petición previa.';
+            '$ec A solicitação falhou devido a uma falha em uma solicitação anterior.';
       }
       break;
     case 426:
       {
         result =
-            '$ec El servidor se reúsa a aplicar la solicitud usando el protocolo actual pero puede estar dispuesto a hacerlo después que el cliente se actualize a un protocolo diferente. El servidor envía un encabezado Upgrade en una respuesta para indicar los protocolos requeridos.';
+            '$ec O servidor se recusa a aplicar a solicitação usando o protocolo atual, mas pode estar disposto a fazê-lo depois que o cliente atualizar para um protocolo diferente. O servidor envia um cabeçalho Upgrade em resposta para indicar os protocolos necessários.';
       }
       break;
     case 428:
       {
         result =
-            '$ec El servidor origen requiere que la solicitud sea condicional. Tiene la intención de prevenir problemas de "actualización perdida", donde un cliente OBTIENE un estado del recurso, lo modifica, y lo PONE devuelta al servidor, cuando mientras un tercero ha modificado el estado del servidor, llevando a un conflicto.';
+            '$ec O servidor de origem exige que a solicitação seja condicional. Destina-se a evitar problemas de "atualização perdida", onde um cliente OBTEM um estado de recurso, modifica-o e COLOCA-O de volta no servidor, enquanto um terceiro modificou o estado do servidor, levando a um conflito.';
       }
       break;
     case 429:
       {
         result =
-            '$ec El usuario ha enviado demasiadas solicitudes en un periodo de tiempo dado.';
+            '$ec O usuário enviou muitas solicitações em um determinado período de tempo.';
       }
       break;
     case 431:
       {
         result =
-            '$ec El servidor no está dispuesto a procesar la solicitud porque los campos de encabezado son demasiado largos. La solicitud PUEDE volver a subirse después de reducir el tamaño de los campos de encabezado solicitados.';
+            '$ec O servidor não está disposto a processar a solicitação porque os campos de cabeçalho são muito longos. A solicitação PODE ser recarregada depois de reduzir o tamanho dos campos de cabeçalho solicitados.';
       }
       break;
     case 451:
       {
         result =
-            '$ec El usuario solicita un recurso ilegal, como alguna página web censurada por algún gobierno.';
+            '$ec O usuário solicita um recurso ilegal, como algum site censurado por algum governo.';
       }
       break;
     case 500:
       {
         result =
-            '$es El servidor ha encontrado una situación que no sabe como manejarla.';
+            '$es O servidor encontrou uma situação que não sabe como lidar.';
       }
       break;
     case 501:
       {
         result =
-            '$es El método solicitado no esta soportado por el servidor y no puede ser manejada. Los unicos métodos que los servidores requieren soporte (y por lo tanto no deben retornar este código) son GET y HEAD.';
+            '$es O método solicitado não é suportado pelo servidor e não pode ser manipulado. Os únicos métodos que os servidores requerem suporte (e, portanto, não devem retornar este código) são GET e HEAD.';
       }
       break;
     case 502:
@@ -331,43 +330,43 @@ String getstatusCode(int statusCode) {
     case 503:
       {
         result =
-            '$es El servidor no esta listo para manejar la petición. Causas comunes puede ser que el servidor está caido por mantenimiento o está sobrecargado. Hay que tomar en cuenta que junto con esta respuesta, una página usuario-amigable explicando el problema debe ser enviada. Estas respuestas deben ser usadas para condiciones temporales y el encabezado HTTP Retry-After: debería, si es posible, contener el tiempo estimado antes de la recuperación del servicio. El webmaster debe también cuidar los encabezados relacionados al caché que son enviados junto a esta respuesta, ya que estas respuestas de condicion temporal deben usualmente no estar en el caché.';
+            '$es O servidor não está pronto para lidar com a solicitação. Causas comuns podem ser que o servidor esteja fora do ar para manutenção ou sobrecarregado. Observe que junto com esta resposta, uma página amigável explicando o problema deve ser enviada. Essas respostas devem ser usadas para condições temporárias e o cabeçalho Retry-After: HTTP deve, se possível, conter o tempo estimado antes da recuperação do serviço. O webmaster também deve cuidar dos cabeçalhos relacionados ao cache que são enviados junto com essa resposta, pois essas respostas de condição temporária geralmente não devem ser armazenadas em cache.';
       }
       break;
     case 504:
       {
         result =
-            '$es Esta respuesta de error es dada cuando el servidor está actuando como una puerta de enlace y no puede obtener una respuesta a tiempo.';
+            '$es Essa resposta de erro é fornecida quando o servidor está atuando como um gateway e não consegue obter uma resposta a tempo.';
       }
       break;
     case 505:
       {
         result =
-            '$es La versión de HTTP usada en la petición no está soportada por el servidor.';
+            '$es A versão HTTP usada na solicitação não é suportada pelo servidor.';
       }
       break;
     case 506:
       {
         result =
-            '$es El servidor tiene un error de configuración interna: negociación de contenido transparente para la petición resulta en una referencia circular.';
+            '$es O servidor tem um erro de configuração interna: a negociação de conteúdo transparente para a solicitação resulta em uma referência circular.';
       }
       break;
     case 507:
       {
         result =
-            '$es El servidor tiene un error de configuración interna: la variable de recurso escogida esta configurada para acoplar la negociación de contenido transparente misma, y no es por lo tanto un punto final adecuado para el proceso de negociación.';
+            '$es O servidor tem um erro de configuração interna: a variável de recurso escolhida está configurada para envolver a própria negociação de conteúdo transparente e, portanto, não é um ponto de extremidade adequado para o processo de negociação.';
       }
       break;
     case 508:
       {
         result =
-            '$es El servidor detectó un ciclo infinito mientras procesaba la solicitud.';
+            '$es O servidor encontrou um loop infinito ao processar a solicitação.';
       }
       break;
     case 510:
       {
         result =
-            '$es Extensiones adicionales para la solicitud son requeridas para que el servidor las cumpla.';
+            '$es Extensões adicionais para a solicitação são necessárias para o servidor atender.';
       }
       break;
     case 511:
