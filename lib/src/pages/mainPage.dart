@@ -27,6 +27,13 @@ class MainPageState extends State<MainPage> {
   List clientinfo = [];
   Http http = Http();
 
+  _getinfo() async {
+    clientinfo = await http.getInfoClients(data);
+    print(clientinfo);
+    print("clientinfo");
+    return clientinfo;
+  }
+
   Widget _appBar() {
     return Container(
       padding: AppTheme.padding,
@@ -161,34 +168,38 @@ class MainPageState extends State<MainPage> {
   }
 
   Widget _myHeadDrawer() {
-    return Container(
-      color: Colors.grey[400],
-      width: double.infinity,
-      height: 200,
-      padding: EdgeInsets.only(top: 20.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.only(bottom: 10),
-            height: 70,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage("assets/user.png"),
-                )),
-          ),
-          Text(
-            "User",
-            style: TextStyle(color: Colors.black, fontSize: 20),
-          ),
-          Text(
-            "email@.com",
-            style: TextStyle(color: Colors.black54, fontSize: 14),
-          ),
-        ],
-      ),
-    );
+    return FutureBuilder(
+        future: _getinfo(),
+        builder: (context, snapshot) {
+          return Container(
+            color: Colors.grey[400],
+            width: double.infinity,
+            height: 200,
+            padding: EdgeInsets.only(top: 20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  height: 70,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage("assets/user.png"),
+                      )),
+                ),
+                Text(
+                  snapshot.data[0]['nome_clients'],
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
+                Text(
+                  snapshot.data[0]['email_clients'],
+                  style: TextStyle(color: Colors.black54, fontSize: 14),
+                ),
+              ],
+            ),
+          );
+        });
   }
 
   @override

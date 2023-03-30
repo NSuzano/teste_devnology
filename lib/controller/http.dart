@@ -20,6 +20,7 @@ class Http {
   final suppliereu = 'producteu/';
   final clients = 'clients/';
   final clientsid = 'clientsid/';
+  final clientsinfo = 'clientsinfo/';
   final lastproducts = 'lastproducts/';
   final headers = {'Content-Type': 'application/json'};
   final encoding = Encoding.getByName('utf-8');
@@ -126,7 +127,7 @@ class Http {
 
   getInfoClients(int id_clients) async {
     http.Response response = await http.get(
-        Uri.parse('$url$clientsid?id_clients=$id_clients'),
+        Uri.parse('$url$clientsinfo?id_clients=$id_clients'),
         headers: headers);
 
     print(response.body);
