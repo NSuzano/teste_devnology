@@ -1,4 +1,3 @@
-import 'package:flutter_ecommerce_app/src/model/product.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
 
 class OrderBR {

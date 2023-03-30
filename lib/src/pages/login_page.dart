@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/src/pages/mainPage.dart';
-import 'package:flutter_ecommerce_app/src/pages/sing_in_page.dart';
+import 'package:flutter_ecommerce_app/src/pages/sign_in_page.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
 import 'package:get/get.dart';
 
-import '../../controller/http.dart';
+import '../controller/http.dart';
 import '../themes/theme.dart';
 
 class LoginPage extends StatefulWidget {

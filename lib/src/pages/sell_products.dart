@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/controller/bo.dart';
-import 'package:flutter_ecommerce_app/controller/http.dart';
-import 'package:flutter_ecommerce_app/src/model/product.dart';
+import 'package:flutter_ecommerce_app/src/controller/bo.dart';
+import 'package:flutter_ecommerce_app/src/controller/http.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +14,6 @@ class SellProducts extends StatefulWidget {
 }
 
 class _SellProductsState extends State<SellProducts> {
-  List<Product> products = [];
   Http http = Http();
   var data = Get.arguments;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/controller/api.dart';
+import 'package:flutter_ecommerce_app/src/controller/api.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
 import 'package:flutter_ecommerce_app/src/pages/product_detail.dart';
 import 'package:get/get.dart';

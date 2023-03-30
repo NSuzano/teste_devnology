@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/controller/cart_controller.dart';
-import 'package:flutter_ecommerce_app/src/model/data.dart';
+import 'package:flutter_ecommerce_app/src/controller/cart_controller.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
 import 'package:flutter_ecommerce_app/src/pages/shopping_cart_page.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
