@@ -29,12 +29,6 @@ class _SellProductsState extends State<SellProducts> {
 
   @override
   Widget build(BuildContext context) {
-    // if (products.isEmpty) {
-    //   setState(() {
-    //     products = Provider.of<List<Product>>(context);
-    //   });
-    // }
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -42,26 +36,7 @@ class _SellProductsState extends State<SellProducts> {
           style: TextStyle(color: Colors.black),
         ),
         toolbarHeight: 100, // Set this height
-        actions: [
-          Image.asset("assets/user.png")
-          // Container(
-          //   height: 120.0,
-          //   width: 120.0,
-          //   decoration: BoxDecoration(
-          //     borderRadius: BorderRadius.circular(14),
-          //     image: DecorationImage(
-          //       image: AssetImage('assets/user.png'),
-          //       fit: BoxFit.fill,
-          //     ),
-          //   ),
-          // )
-          // Container(
-          //     decoration: BoxDecoration(
-          //       border: Border.all(width: 5),
-          //       borderRadius: BorderRadius.circular(20), //<-- SEE HERE
-          //     ),
-          //     child: Image.asset("assets/user.png")),
-        ],
+        actions: [Image.asset("assets/user.png")],
         backgroundColor: Color(0xfffbfbfb),
         elevation: 0,
         iconTheme: IconThemeData(color: LightColor.iconColor),

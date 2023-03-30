@@ -72,8 +72,10 @@ class ShoppingCartPage extends StatelessWidget {
 
                       http.makeProductPostRequest(supListKey[i]);
 
-                      http.makeOrderPostRequest(
-                          1, supListValue[i], double.parse(controller.total));
+                      int quant = controller.products.values.toList()[i];
+
+                      http.makeOrderPostRequest(data, quant, supListValue[i],
+                          double.parse(controller.total));
                     }
 
                     if (controller.products.value.length != 0) {
@@ -142,11 +144,6 @@ class CartProductCard extends StatelessWidget {
     );
   }
 }
-
-// class ShoppingCartPage extends StatelessWidget {
-//   Widget _cartItems() {
-//     return Column(children: AppData.cartList.map((x) => _item(x)).toList());
-//   }
 
 Widget _item(SupplierBR model) {
   return Container(
@@ -220,75 +217,3 @@ Widget _item(SupplierBR model) {
     ),
   );
 }
-
-// Widget _price(SupplierBR model) {
-//   return Row(
-//     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//     children: <Widget>[
-//       TitleText(
-//         text: '${AppData.cartList.length} Items',
-//         color: LightColor.grey,
-//         fontSize: 14,
-//         fontWeight: FontWeight.w500,
-//       ),
-//       TitleText(
-//         text: '\$${model.preco}',
-//         fontSize: 18,
-//       ),
-//     ],
-//   );
-// }
-
-//   Widget _submitButton(BuildContext context) {
-//     return TextButton(
-//       onPressed: () {},
-//       style: ButtonStyle(
-//         shape: MaterialStateProperty.all(
-//           RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-//         ),
-//         backgroundColor: MaterialStateProperty.all<Color>(LightColor.orange),
-//       ),
-//       child: Container(
-//         alignment: Alignment.center,
-//         padding: EdgeInsets.symmetric(vertical: 4),
-//         width: AppTheme.fullWidth(context) * .75,
-//         child: TitleText(
-//           text: 'Next',
-//           color: LightColor.background,
-//           fontWeight: FontWeight.w500,
-//         ),
-//       ),
-//     );
-//   }
-
-//   double getPrice() {
-//     double price = 0;
-//     AppData.cartList.forEach((x) {
-//       price += x.price * x.id;
-//     });
-//     return price;
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       padding: AppTheme.padding,
-//       child: SingleChildScrollView(
-//         child: Column(
-//           children: <Widget>[
-//             ListView.builder(
-//                 itemCount: controller.products.lenght,
-//                 itemBuilder: (context, index) {}),
-//             Divider(
-//               thickness: 1,
-//               height: 70,
-//             ),
-//             _price(),
-//             SizedBox(height: 30),
-//             _submitButton(context),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
