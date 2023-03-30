@@ -119,7 +119,7 @@ class Http {
     print(json);
 
     if (json.length == 0) {
-      return 0;
+      return [];
     } else {
       return json;
     }
@@ -150,7 +150,7 @@ class Http {
         'Estado da Resposta ${response.statusCode} => ${getstatusCode(response.statusCode)}');
   }
 
-  makeOrderPostRequest(int quant, int supbr, double total) async {
+  makeOrderPostRequest(int idClient, int quant, int supbr, double total) async {
     // Map teste = {
     //   'nome_product': 'teste',
     //   'preco_product': 12.1,
@@ -170,9 +170,7 @@ class Http {
 
     int idLastProduct = await makeGetLastProductsRequest();
 
-    int teste = 1;
-
-    OrderBR order = OrderBR(1, quant, idLastProduct, total);
+    OrderBR order = OrderBR(idClient, quant, idLastProduct, total);
 
     String body = json.encode(order.toJson());
     http.Response response = await http.post(Uri.parse('$url$orderurl'),
