@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/controller/cart_controller.dart';
+import 'package:flutter_ecommerce_app/src/controller/cart_controller.dart';
 import 'package:get/get.dart';
 
 class CartTotal extends StatelessWidget {
@@ -21,7 +21,7 @@ class CartTotal extends StatelessWidget {
             Text(
               controller.total.toString() == "()"
                   ? "00.00"
-                  : "${controller.total}",
+                  : "\$${controller.total}",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             )
           ],

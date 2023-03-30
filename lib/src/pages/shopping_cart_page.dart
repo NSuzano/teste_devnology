@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/controller/cart_controller.dart';
-import 'package:flutter_ecommerce_app/controller/http.dart';
-import 'package:flutter_ecommerce_app/src/model/data.dart';
-import 'package:flutter_ecommerce_app/src/model/product.dart';
+import 'package:flutter_ecommerce_app/src/controller/cart_controller.dart';
+import 'package:flutter_ecommerce_app/src/controller/http.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
 import 'package:flutter_ecommerce_app/src/pages/home_page.dart';
 import 'package:flutter_ecommerce_app/src/pages/mainPage.dart';
@@ -16,7 +14,6 @@ import '../model/order_br.dart';
 
 class ShoppingCartPage extends StatelessWidget {
   final CartController controller = Get.find();
-  final Product product = Product(1, "TESTETotal", 2.35);
   Http http = Http();
   var data = Get.arguments;
 
