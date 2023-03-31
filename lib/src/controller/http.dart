@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/src/model/supplier1.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -11,7 +12,7 @@ import '../model/order_br.dart';
 
 class Http {
   // localhost || 10.0.2.2 (mysql) || 192.168.1.165 (home) || 10.192.82.178 (eduroam) || 10.10.10.47 (PIA despscho Juanjo)
-  final url = 'http://192.168.1.5:8000/';
+  final url = 'http://192.168.1.3:8000/';
   final url2 = 'http://localhost:8000/';
   final products = 'products/';
   final orderurl = 'order/';
