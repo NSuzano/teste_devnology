@@ -31,7 +31,7 @@ E-Commerce app is a design implementaion of [E-commerce App](https://dribbble.co
 
 ## Passo a passo para instalar o App
 
-- Faça download do app para poder instalar no celular.  <a href="https://raw.githubusercontent.com/NSuzano/teste_devnology/blob/main/assets/apk/teste.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
+- Faça download do app para poder instalar no celular.  <a href="https://github.com/TheAlphamerc/flutter_ecommerce_app/releases/download/v1.0.0/app-release.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
 
 - Faça download e instale o <a href="https://www.apachefriends.org/pt_br/download.html"> XAMPP</a>
 - Após instalar e iniciar o xamp, iniciar o Servidor Apache e o MySQL clicando em Start
