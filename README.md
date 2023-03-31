@@ -16,6 +16,12 @@ E-Commerce app is a design implementaion of [E-commerce App](https://dribbble.co
 
 
 
+## Tecnologias
+
+- Flutter
+- Node.js
+- Xampp Apache / MySQL
+
 
 ## Screenshots
 
@@ -31,12 +37,20 @@ E-Commerce app is a design implementaion of [E-commerce App](https://dribbble.co
 
 ## Passo a passo para instalar o App
 
+
 - Faça download do app para poder instalar no celular.  <a href="https://github.com/NSuzano/teste_devnology/releases/download/flutter/teste.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
 
+- Faça download e instale o <a href="https://nodejs.org/en/download"> Node JS</a> 
 - Faça download e instale o <a href="https://www.apachefriends.org/pt_br/download.html"> XAMPP</a>
 - Após instalar e iniciar o xamp, iniciar o Servidor Apache e o MySQL clicando em Start
 
-- Clique em Admin para ir para a o Banco de Dados e adicionar. Na barra em cima clique em "SQL" e cole este código e em baixo clique em "Continuar"
+<img src="https://github.com/NSuzano/teste_devnology/blob/main/assets/screenshots/xampp.PNG" width="500"/>
+
+
+- Clique em Admin do MySQL para ir para a o Banco de Dados e adicionar. Na barra em cima clique em "SQL" e cole este código e em baixo clique em "Continuar"
+
+<img src="https://github.com/NSuzano/teste_devnology/blob/main/assets/screenshots/database.PNG" width="900"/>
+
 
 ``` 
 drop database if exists teste_devnology;
@@ -96,9 +110,28 @@ ALTER TABLE order_details ADD CONSTRAINT fk_supplier_eu FOREIGN KEY(id_supplier_
 ```
 
 
-- 
+- Digite o comando no terminal do seu editor de código "git clone https://github.com/NSuzano/teste_devnology.git" para clonar os arquivos.
+
+- No terminal viajar para a pasta "teste_devnology/server/src".
+
+- Digitar o comando "node index.js", para iniciar o servidor.
+
+- No celular, faça com que esteja na mesma rede WIFI do PC.
+
+- No celular, mude o seu ip em Configurações, em WIFI mude de DHCP para Estático e digite o IP "192.168.1.50".
+
+- Instale o APK no celular.
 
 
+
+
+# Observações Adicionais
+
+- Eu tentei adicionar mais funções mas não consegui pelo tempo, queria adicionar tela de favoritos para que o usuário pudesse favoritar os produtos, botão de categoria onde mostrasse os produtos específicos, por isso o botão do lado da barra de pesquisa no meio não funciona 
+
+- No menu principal existe dois locais de pesquisa, no meio e na barra em baixo, não consegui fazer com que o de baixo funcionasse, então só está funcionando o do meio. Tentei tirar o botão já que não funciona, mas ao fazer isso deu erro de Widget, então para não perder tempo deixei e depois adiciono.
+
+- Eu tentei adicionar também os produtos do fornecedor europeu mas não consegui fazer com que no banco de dados funcionasse, criei os modelos, mas não estão sendo consumidos.
 
 
 
