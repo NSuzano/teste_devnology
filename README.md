@@ -127,7 +127,7 @@ ALTER TABLE order_details ADD CONSTRAINT fk_supplier_eu FOREIGN KEY(id_supplier_
 
 # Observações Adicionais
 
-- Eu tentei adicionar mais funções mas não consegui pelo tempo, queria adicionar tela de favoritos para que o usuário pudesse favoritar os produtos, botão de categoria onde mostrasse os produtos específicos, por isso o botão do lado da barra de pesquisa no meio não funciona 
+- Eu tentei adicionar mais funções mas não consegui pelo tempo, queria adicionar tela de favoritos para que o usuário pudesse favoritar os produtos, botão de categoria onde mostrasse os produtos específicos, por isso o botão do lado da barra de pesquisa de baixo não funciona 
 
 - No menu principal existe dois locais de pesquisa, no meio e na barra em baixo, não consegui fazer com que o de baixo funcionasse, então só está funcionando o do meio. Tentei tirar o botão já que não funciona, mas ao fazer isso deu erro de Widget, então para não perder tempo deixei e depois adiciono.
 
