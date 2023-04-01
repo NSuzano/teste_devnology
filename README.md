@@ -120,6 +120,8 @@ ALTER TABLE order_details ADD CONSTRAINT fk_supplier_eu FOREIGN KEY(id_supplier_
 
 - No celular, mude o seu ip em Configurações, em WIFI mude de DHCP para Estático e digite o IP "192.168.1.50".
 
+- No local onde o servidor foi iniciado, mude seu ip em Rede para "192.168.1.3".
+
 - Instale o APK no celular.
 
 
@@ -132,6 +134,8 @@ ALTER TABLE order_details ADD CONSTRAINT fk_supplier_eu FOREIGN KEY(id_supplier_
 - No menu principal existe dois locais de pesquisa, no meio e na barra em baixo, não consegui fazer com que o de baixo funcionasse, então só está funcionando o do meio. Tentei tirar o botão já que não funciona, mas ao fazer isso deu erro de Widget, então para não perder tempo deixei e depois adiciono.
 
 - Eu tentei adicionar também os produtos do fornecedor europeu mas não consegui fazer com que no banco de dados funcionasse, criei os modelos, mas não estão sendo consumidos.
+
+- Irei mudar o jeito de iniciar mudando o ip, pois ainda tem muito trabalho para fazer o app funcionar, como eu coloquei como padrão o ip de "192.168.1.3" no app, ele procura esse ip como servidor. Ainda não encontrei um jeito para ele pegar o ip da máquina.
 
 
 
